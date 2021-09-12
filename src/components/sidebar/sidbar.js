@@ -37,39 +37,41 @@ import PetsIcon from "@material-ui/icons/Pets";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
 import TimelineIcon from "@material-ui/icons/Timeline";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex"
+    display: "flex",
   },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    backgroundColor: "#246e42",
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    })
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   hide: {
-    display: "none"
+    display: "none",
   },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0
+    flexShrink: 0,
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
   },
   drawerHeader: {
     display: "flex",
@@ -77,53 +79,53 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   currentPage: {
-    textDecoration: "none"
+    textDecoration: "none",
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth
+    marginLeft: -drawerWidth,
   },
   contentShift: {
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
+      duration: theme.transitions.duration.enteringScreen,
     }),
-    marginLeft: 0
+    marginLeft: 0,
   },
   rootList: {
     width: "100%",
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
   },
   nested: {
-    paddingLeft: theme.spacing(4)
+    paddingLeft: theme.spacing(4),
   },
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
-      display: "flex"
-    }
+      display: "flex",
+    },
   },
   sectionMobile: {
     display: "flex",
     [theme.breakpoints.up("md")]: {
-      display: "none"
-    }
-  }
+      display: "none",
+    },
+  },
 }));
 
-export default function PersistentDrawerLeft({ children }) {
+export default function PersistentDrawerLeft({ children, isAuthenticated }) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -180,10 +182,10 @@ export default function PersistentDrawerLeft({ children }) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem href="mycourses">
+      <MenuItem href="dino">
         <IconButton aria-label="show 4 new mails" color="inherit">
           <Badge color="secondary">
-            <BookRoundedIcon />
+            <PetsIcon />
           </Badge>
         </IconButton>
         <p>My Courses</p>
@@ -192,7 +194,7 @@ export default function PersistentDrawerLeft({ children }) {
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="secondary">
-            <MailIcon />
+            <TimelineIcon />
           </Badge>
         </IconButton>
         <p>Messages</p>
@@ -200,7 +202,7 @@ export default function PersistentDrawerLeft({ children }) {
       <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
           <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
+            <AssignmentIcon />
           </Badge>
         </IconButton>
         <p>Notifications</p>
@@ -237,7 +239,7 @@ export default function PersistentDrawerLeft({ children }) {
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
-          [classes.appBarShift]: open
+          [classes.appBarShift]: open,
         })}
       >
         <Toolbar>
@@ -251,40 +253,49 @@ export default function PersistentDrawerLeft({ children }) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Persistent drawer
+            Timage
           </Typography>
-          <Button color="inherit">Login</Button>
+
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton
               aria-label="show 17 new notifications"
               color="inherit"
-              href="mycourses"
+              href="dino"
             >
               <Badge color="secondary">
-                <BookRoundedIcon />
+                <PetsIcon />
               </Badge>
             </IconButton>
             <IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
+                <TimelineIcon />
               </Badge>
             </IconButton>
             <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
+              aria-label="show 17 new notifications"
               color="inherit"
+              component={Link}
+              to="/quiz"
             >
-              <AccountCircle />
+              <Badge badgeContent={17} color="secondary">
+                <AssignmentIcon />
+              </Badge>
             </IconButton>
+            {isAuthenticated ? (
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            ) : (
+              <Button color="inherit">Login</Button>
+            )}
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -310,7 +321,7 @@ export default function PersistentDrawerLeft({ children }) {
         anchor="left"
         open={open}
         classes={{
-          paper: classes.drawerPaper
+          paper: classes.drawerPaper,
         }}
       >
         <div className={classes.drawerHeader}>
@@ -327,7 +338,7 @@ export default function PersistentDrawerLeft({ children }) {
         </div>
         <Divider />
         <List>
-          <ListItem button key="Dinos">
+          <ListItem button key="Dinos" component={Link} to="/dino">
             <ListItemIcon>
               <PetsIcon />
             </ListItemIcon>
@@ -354,31 +365,46 @@ export default function PersistentDrawerLeft({ children }) {
           </ListItem>
           <Collapse in={openMyCoursesList} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItem button className={classes.nested}>
+              <ListItem
+                component={Link}
+                to="/stoneage"
+                button
+                className={classes.nested}
+              >
                 <ListItemText primary="Stone Age" />
               </ListItem>
-              <ListItem button className={classes.nested}>
+              <ListItem
+                button
+                className={classes.nested}
+                component={Link}
+                to="/bronze"
+              >
                 <ListItemText primary="Bronze Age" />
               </ListItem>
-              <ListItem button className={classes.nested}>
+              <ListItem
+                button
+                className={classes.nested}
+                component={Link}
+                to="/ironage"
+              >
                 <ListItemText primary="Iron Age" />
               </ListItem>
             </List>
           </Collapse>
-          <ListItem button>
+          <ListItem button component={Link} to="/quiz">
             <ListItemIcon>
               <AssignmentIcon />
             </ListItemIcon>
             <ListItemText primary="Quiz" />
           </ListItem>
-          <ListItem button>
+          <ListItem button component={Link} to="/">
             <ListItemIcon>
               <EmojiEmotionsIcon />
             </ListItemIcon>
             <ListItemText primary="Random Facts" />
           </ListItem>
           <ListItem button>
-            <ListItemIcon>
+            <ListItemIcon component={Link} to="/settings">
               <SettingsIcon />
             </ListItemIcon>
             <ListItemText primary="Settings" />
@@ -387,7 +413,7 @@ export default function PersistentDrawerLeft({ children }) {
       </Drawer>
       <main
         className={clsx(classes.content, {
-          [classes.contentShift]: open
+          [classes.contentShift]: open,
         })}
       >
         <div className={classes.drawerHeader} />
