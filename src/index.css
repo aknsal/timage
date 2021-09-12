@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Poppins', sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/*Card--Timeline */
+.card--timeline {
+  margin-right :0.35rem;
+}
+.card--timeline .card-title {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.card--timeline .card-title {
+  font-weight: bold;
+  font-size: 1.0em;
+} 
+.card--timeline .card-data{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card--timeline .card-data p{
+  font-size: 0.8rem;
+  text-align: center;
+}
+.card--timeline .btn { 
+  background: #0F52BA;
+  color: white;
+  border: 0;
+  padding: 0.5rem;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  cursor: pointer;
+} 
+.card--timeline .btn:hover{
+  color: #0F52BA;
+  background: #FFDF00;
+  transition: 0.5s 0s ease;
+}
+
+/* Modal--TImeline */
+.modal--timeline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255,255,255,0.1);
+  background: rgba(119,179,84,0.4);
+  /* background: linear-gradient(rgba(119,179,84), rgba(53, 121, 87, 0.1)); */
+  backdrop-filter: blur(8px);
+  overflow-y: auto;
+}
+.modal--timeline .modal-title {
+  font-size: 2rem;
+}
+.modal--timeline .two-col {
+  list-style: none;
+  display:flex;
+  flex-direction: row;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+.modal--timeline .two-col li{
+  margin-right: 2rem;
+  width: 50%;
+  text-align: center;
+}
+
+.close-btn {
+  background: #5477b3;
+  color: white;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  text-align: center;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+}
+.close-btn:hover {
+  background: white;
+  color: green;
+  transition: 0.5s 0s ease;
+}
