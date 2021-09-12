@@ -294,7 +294,9 @@ export default function PersistentDrawerLeft({ children, isAuthenticated }) {
                 <AccountCircle />
               </IconButton>
             ) : (
-              <Button color="inherit">Login</Button>
+              <Button color="inherit" href="/login">
+                Login
+              </Button>
             )}
           </div>
           <div className={classes.sectionMobile}>
@@ -377,7 +379,7 @@ export default function PersistentDrawerLeft({ children, isAuthenticated }) {
                 button
                 className={classes.nested}
                 component={Link}
-                to="/bronze"
+                to="/bronzeage"
               >
                 <ListItemText primary="Bronze Age" />
               </ListItem>

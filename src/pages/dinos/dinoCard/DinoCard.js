@@ -132,9 +132,6 @@ export function DinoCard({ dinoData }) {
         <Button size="medium" color="#11302a">
           Share
         </Button>
-        <Button size="medium" color="#11302a">
-          Learn More
-        </Button>
       </CardActions>
     </Card>
   );
